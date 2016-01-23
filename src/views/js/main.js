@@ -444,8 +444,11 @@ var resizePizzas = function(size) {
 
     // Iterates through pizza elements on the page and changes their widths
     function changePizzaSizes(size) {
+        // use getElementsByClassName because it is faster than querySelectorAll
+        // remove the look ups form the for loop and delete function determineDx
         var pizzas = document.getElementsByClassName("randomPizzaContainer");
         var pizzasNumber = pizzas.length;
+        // set width according to size
         if (size == 1) {
             for (var i = 0; i < pizzasNumber; i++) {
                 pizzas[i].style.width = "25%";
@@ -472,9 +475,10 @@ var resizePizzas = function(size) {
 
 window.performance.mark("mark_start_generating"); // collect timing data
 
+// remove pizzasDiv from for loop to improve load performance
+var pizzasDiv = document.getElementById("randomPizzas");
 // This for-loop actually creates and appends all of the pizzas when the page loads
 for (var i = 2; i < 100; i++) {
-    var pizzasDiv = document.getElementById("randomPizzas");
     pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -546,11 +550,15 @@ function updatePositions() {
 // runs ready - requestAnimationFrame on scroll
 window.addEventListener('scroll', ready);
 
+// checks height of screen and adjust number of background pizzas
+var windowHeight = window.innerHeight;
+var bgPizzaNumber = (Math.ceil(windowHeight / 256)) * 4;
+
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
     var cols = 4;
     var s = 256;
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < bgPizzaNumber; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
         elem.src = "images/pizza.png";
