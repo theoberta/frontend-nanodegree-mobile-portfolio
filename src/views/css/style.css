@@ -33,6 +33,7 @@ form {
   position: fixed;
   z-index: -1;
   /*so browser creates extra layer*/
+   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
