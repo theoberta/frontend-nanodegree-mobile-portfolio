@@ -2,7 +2,7 @@
 
 ### How to run the application
 
-Open index.html in a browser or visit http://theoberta.github.io/frontend-nanodegree-mobile-portfolio.
+Open index.html in a browser or visit http://theoberta.github.io/frontend-nanodegree-mobile-portfolio/dist.
 
 ### Challenge
 1. achieve PageSpeed score of 90 for index.html
